@@ -145,6 +145,11 @@
 		B55D54FE2F37E4E5002DE761 /* PopoverResizeHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */; };
 		A1D000000000000000000001 /* ComparableExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000003 /* ComparableExtensionsTests.swift */; };
 		A1D000000000000000000002 /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A01B62F4FDE5800C8A33E /* Comparable+Extensions.swift */; };
+		A1D000000000000000000013 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000010 /* ToDoList.swift */; };
+		A1D000000000000000000014 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000010 /* ToDoList.swift */; };
+		A1D000000000000000000015 /* ToDoListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000011 /* ToDoListService.swift */; };
+		A1D000000000000000000016 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000012 /* ToDoListTests.swift */; };
+		A1D000000000000000000018 /* ToDoPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000017 /* ToDoPreferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -302,6 +307,10 @@
 		B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverResizeHandleView.swift; sourceTree = "<group>"; };
 		A1D000000000000000000003 /* ComparableExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableExtensionsTests.swift; sourceTree = "<group>"; };
 		A1D000000000000000000004 /* Reminders MenuBar Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Reminders MenuBar Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1D000000000000000000010 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
+		A1D000000000000000000011 /* ToDoListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListService.swift; sourceTree = "<group>"; };
+		A1D000000000000000000012 /* ToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
+		A1D000000000000000000017 /* ToDoPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +388,8 @@
 				71217BA92F8DEF1000E5FEB4 /* UpdateService */,
 				71F2AF662FB190EA00C59519 /* Parsers */,
 				B55D54F72F37DF4E002DE761 /* ReminderCopyService.swift */,
+				A1D000000000000000000011 /* ToDoListService.swift */,
+				A1D000000000000000000017 /* ToDoPreferences.swift */,
 				71CC00012FA6000100000001 /* CopyShortcutCoordinator.swift */,
 				71CE00012FA6000100000001 /* NewReminderTypingCoordinator.swift */,
 				71CC00032FA6000300000002 /* SettingsCoordinator.swift */,
@@ -436,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				A1D000000000000000000003 /* ComparableExtensionsTests.swift */,
+				A1D000000000000000000012 /* ToDoListTests.swift */,
 			);
 			path = "reminders-menubar-tests";
 			sourceTree = "<group>";
@@ -485,6 +497,7 @@
 				716CAFEF2AC28E5500EEB1DB /* ReminderItem.swift */,
 				7172A74724C776E6001F96F1 /* RemindersData.swift */,
 				7102422F25F55D5600451D15 /* ReminderInterval.swift */,
+				A1D000000000000000000010 /* ToDoList.swift */,
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
 				71EE0000308A000100000001 /* ReminderExternalLinks.swift */,
@@ -907,6 +920,9 @@
 				71B4AD4F25B7D06400214219 /* CalendarTitle.swift in Sources */,
 				716F69F42D6421170080A5F1 /* ReminderChangeDueDateOptionMenu.swift in Sources */,
 				B55D54F82F37DF4E002DE761 /* ReminderCopyService.swift in Sources */,
+				A1D000000000000000000013 /* ToDoList.swift in Sources */,
+				A1D000000000000000000015 /* ToDoListService.swift in Sources */,
+				A1D000000000000000000018 /* ToDoPreferences.swift in Sources */,
 				71CC00022FA6000200000001 /* CopyShortcutCoordinator.swift in Sources */,
 				71CE00022FA6000200000001 /* NewReminderTypingCoordinator.swift in Sources */,
 				71CC00042FA6000400000002 /* SettingsCoordinator.swift in Sources */,
@@ -995,6 +1011,8 @@
 			files = (
 				A1D000000000000000000001 /* ComparableExtensionsTests.swift in Sources */,
 				A1D000000000000000000002 /* Comparable+Extensions.swift in Sources */,
+				A1D000000000000000000014 /* ToDoList.swift in Sources */,
+				A1D000000000000000000016 /* ToDoListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
