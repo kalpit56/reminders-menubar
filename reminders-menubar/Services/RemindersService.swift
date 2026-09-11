@@ -195,6 +195,13 @@ class RemindersService {
         )
     }
     
+    func createNew(titled title: String, in calendar: EKCalendar) {
+        let newReminder = EKReminder(eventStore: eventStore)
+        newReminder.title = title
+        newReminder.calendar = calendar
+        save(reminder: newReminder)
+    }
+
     func fetchAllReminders() async -> [EKReminder] {
         let predicate = eventStore.predicateForReminders(in: nil)
         return await fetchReminders(matching: predicate)

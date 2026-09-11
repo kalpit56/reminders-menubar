@@ -23,6 +23,25 @@ enum ToDoList {
         return writableLists.first(where: { isToDoListTitle($0.title) })
     }
 
+    static func normalizedTitle(_ input: String) -> String? {
+        let trimmedInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmedInput.isEmpty ? nil : trimmedInput
+    }
+
+    static func sortedNewestFirst<Item>(_ items: [Item], creationDate: (Item) -> Date?) -> [Item] {
+        // NOTE: Items without a creation date go last, and ties keep their original order.
+        return items.enumerated()
+            .sorted { first, second in
+                let firstDate = creationDate(first.element) ?? .distantPast
+                let secondDate = creationDate(second.element) ?? .distantPast
+                if firstDate != secondDate {
+                    return firstDate > secondDate
+                }
+                return first.offset < second.offset
+            }
+            .map(\.element)
+    }
+
     static func isToDoListTitle(_ listTitle: String) -> Bool {
         let trimmedTitle = listTitle.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmedTitle.caseInsensitiveCompare(title) == .orderedSame

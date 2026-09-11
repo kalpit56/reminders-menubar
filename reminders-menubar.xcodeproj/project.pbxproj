@@ -154,6 +154,10 @@
 		A1D000000000000000000024 /* PopoverTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000020 /* PopoverTab.swift */; };
 		A1D000000000000000000025 /* PopoverTabPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000021 /* PopoverTabPicker.swift */; };
 		A1D000000000000000000026 /* PopoverTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000022 /* PopoverTabTests.swift */; };
+		A1D000000000000000000034 /* ToDoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000030 /* ToDoData.swift */; };
+		A1D000000000000000000035 /* ToDoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000031 /* ToDoContentView.swift */; };
+		A1D000000000000000000036 /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000032 /* ToDoItemView.swift */; };
+		A1D000000000000000000037 /* ToDoAddField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000033 /* ToDoAddField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -318,6 +322,10 @@
 		A1D000000000000000000020 /* PopoverTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverTab.swift; sourceTree = "<group>"; };
 		A1D000000000000000000021 /* PopoverTabPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverTabPicker.swift; sourceTree = "<group>"; };
 		A1D000000000000000000022 /* PopoverTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverTabTests.swift; sourceTree = "<group>"; };
+		A1D000000000000000000030 /* ToDoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoData.swift; sourceTree = "<group>"; };
+		A1D000000000000000000031 /* ToDoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoContentView.swift; sourceTree = "<group>"; };
+		A1D000000000000000000032 /* ToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemView.swift; sourceTree = "<group>"; };
+		A1D000000000000000000033 /* ToDoAddField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAddField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +355,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1D000000000000000000038 /* ToDoView */ = {
+			isa = PBXGroup;
+			children = (
+				A1D000000000000000000031 /* ToDoContentView.swift */,
+				A1D000000000000000000032 /* ToDoItemView.swift */,
+				A1D000000000000000000033 /* ToDoAddField.swift */,
+			);
+			path = ToDoView;
+			sourceTree = "<group>";
+		};
 		71059DA925CA5244001F3063 /* reminders-menubar-launcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +401,7 @@
 				715B4DD328D4109A008C6683 /* ToolbarView */,
 				71F93A5D2E03B4B600D5C5BC /* ReminderItemView */,
 				7113A2802F6FB05800474582 /* ReminderEditView */,
+				A1D000000000000000000038 /* ToDoView */,
 				71C4AC132F7B821D0045A8BA /* EmptyStates */,
 				712C32B524BF939100AC75E2 /* ContentView.swift */,
 			);
@@ -507,6 +526,7 @@
 				7102422F25F55D5600451D15 /* ReminderInterval.swift */,
 				A1D000000000000000000010 /* ToDoList.swift */,
 				A1D000000000000000000020 /* PopoverTab.swift */,
+				A1D000000000000000000030 /* ToDoData.swift */,
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
 				71EE0000308A000100000001 /* ReminderExternalLinks.swift */,
@@ -935,6 +955,10 @@
 				A1D000000000000000000018 /* ToDoPreferences.swift in Sources */,
 				A1D000000000000000000023 /* PopoverTab.swift in Sources */,
 				A1D000000000000000000025 /* PopoverTabPicker.swift in Sources */,
+				A1D000000000000000000034 /* ToDoData.swift in Sources */,
+				A1D000000000000000000035 /* ToDoContentView.swift in Sources */,
+				A1D000000000000000000036 /* ToDoItemView.swift in Sources */,
+				A1D000000000000000000037 /* ToDoAddField.swift in Sources */,
 				71CC00022FA6000200000001 /* CopyShortcutCoordinator.swift in Sources */,
 				71CE00022FA6000200000001 /* NewReminderTypingCoordinator.swift in Sources */,
 				71CC00042FA6000400000002 /* SettingsCoordinator.swift in Sources */,

@@ -1,3 +1,4 @@
+import Foundation
 import Testing
 
 private struct FakeList: ReminderListCandidate, Equatable {
@@ -83,6 +84,89 @@ struct ToDoListTests {
         let firstList = FakeList(calendarIdentifier: "a", title: "To-Dos")
         let secondList = FakeList(calendarIdentifier: "b", title: "to-dos")
         #expect(ToDoList.match(in: [firstList, secondList], savedIdentifier: nil) == firstList)
+    }
+}
+
+struct ToDoTitleTests {
+    @Test(arguments: ["", " ", "   ", "\n", "\t", " \n\t "])
+    func blankInputIsRejected(input: String) {
+        #expect(ToDoList.normalizedTitle(input) == nil)
+    }
+
+    @Test(arguments: [
+        (input: "find gift for friend", expected: "find gift for friend"),
+        (input: "  find gift for friend  ", expected: "find gift for friend"),
+        (input: "\nfind gift for friend\n", expected: "find gift for friend"),
+        (input: "a", expected: "a"),
+        (input: "call  mom", expected: "call  mom"),
+        (input: "call mom Friday", expected: "call mom Friday"),
+        (input: "🎁 gift", expected: "🎁 gift")
+    ])
+    func titleIsTrimmedButOtherwiseUnchanged(input: String, expected: String) {
+        #expect(ToDoList.normalizedTitle(input) == expected)
+    }
+}
+
+struct ToDoSortingTests {
+    private struct Item: Equatable {
+        let name: String
+        let creationDate: Date?
+    }
+
+    private let oldest = Date(timeIntervalSince1970: 1_000)
+    private let middle = Date(timeIntervalSince1970: 2_000)
+    private let newest = Date(timeIntervalSince1970: 3_000)
+
+    private func sorted(_ items: [Item]) -> [String] {
+        ToDoList.sortedNewestFirst(items, creationDate: \.creationDate).map(\.name)
+    }
+
+    @Test
+    func emptyStaysEmpty() {
+        #expect(sorted([]).isEmpty)
+    }
+
+    @Test
+    func singleItemIsUnchanged() {
+        #expect(sorted([Item(name: "a", creationDate: oldest)]) == ["a"])
+    }
+
+    @Test
+    func newestComesFirst() {
+        let items = [
+            Item(name: "oldest", creationDate: oldest),
+            Item(name: "newest", creationDate: newest),
+            Item(name: "middle", creationDate: middle)
+        ]
+        #expect(sorted(items) == ["newest", "middle", "oldest"])
+    }
+
+    @Test
+    func missingDatesGoLast() {
+        let items = [
+            Item(name: "undated", creationDate: nil),
+            Item(name: "dated", creationDate: oldest)
+        ]
+        #expect(sorted(items) == ["dated", "undated"])
+    }
+
+    @Test
+    func sameDateKeepsOriginalOrder() {
+        let items = [
+            Item(name: "first", creationDate: middle),
+            Item(name: "second", creationDate: middle),
+            Item(name: "third", creationDate: middle)
+        ]
+        #expect(sorted(items) == ["first", "second", "third"])
+    }
+
+    @Test
+    func allUndatedKeepOriginalOrder() {
+        let items = [
+            Item(name: "first", creationDate: nil),
+            Item(name: "second", creationDate: nil)
+        ]
+        #expect(sorted(items) == ["first", "second"])
     }
 }
 

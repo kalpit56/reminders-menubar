@@ -90,7 +90,9 @@ struct ContentView: View {
     }
 
     private func handleNewReminderTyping(_ event: NSEvent, popoverWindow: NSWindow) -> Bool {
-        guard !remindersData.showingSearch,
+        // NOTE: On the To Do tab, typing goes to the to-do add field instead.
+        guard toDoPreferences.selectedTab == .reminders,
+              !remindersData.showingSearch,
               !remindersData.availableCalendars.isEmpty,
               popoverWindow.attachedSheet == nil || newReminderTypingCoordinator.isHandoffActive,
               isTextInputEvent(event) else {
@@ -224,9 +226,7 @@ struct ContentView: View {
     }
 
     @ViewBuilder private var toDoContent: some View {
-        // NOTE: Placeholder until the To-Do list view is built.
-        Color.clear
-            .frame(maxHeight: .infinity)
+        ToDoContentView()
     }
 }
 
@@ -260,5 +260,6 @@ struct ListSectionModifier: ViewModifier {
 #Preview {
     ContentView()
         .environmentObject(RemindersData())
+        .environmentObject(ToDoData())
         .environmentObject(NewReminderTypingCoordinator())
 }

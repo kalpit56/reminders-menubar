@@ -23596,6 +23596,17 @@
         }
       }
     },
+    "toDoAddFieldPlaceholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a to-do"
+          }
+        }
+      }
+    },
     "toDoTabTitle" : {
       "extractionState" : "manual",
       "localizations" : {
