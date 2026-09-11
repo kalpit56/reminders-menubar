@@ -196,6 +196,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case showTagsBeforeCalendarsOption
     case filterTagRemindersByCalendarOption
     case tagRemindersFilterByCalendarEnabledHelp
+    case remindersTabTitle
+    case toDoTabTitle
 }
 
 struct ReminderMenuBarLocale {

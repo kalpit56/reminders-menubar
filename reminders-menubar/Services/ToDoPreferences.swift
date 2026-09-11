@@ -2,6 +2,7 @@ import SwiftUI
 
 private enum ToDoPreferencesKeys {
     static let listIdentifier = "toDoListIdentifier"
+    static let selectedTab = "selectedPopoverTab"
 }
 
 class ToDoPreferences: ObservableObject {
@@ -19,6 +20,14 @@ class ToDoPreferences: ObservableObject {
         }
         set {
             ToDoPreferences.defaults.set(newValue, forKey: ToDoPreferencesKeys.listIdentifier)
+        }
+    }
+
+    @Published var selectedTab: PopoverTab = {
+        return PopoverTab(storedValue: defaults.string(forKey: ToDoPreferencesKeys.selectedTab))
+    }() {
+        didSet {
+            ToDoPreferences.defaults.set(selectedTab.rawValue, forKey: ToDoPreferencesKeys.selectedTab)
         }
     }
 }

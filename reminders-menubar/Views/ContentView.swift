@@ -5,6 +5,7 @@ struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @EnvironmentObject var newReminderTypingCoordinator: NewReminderTypingCoordinator
     @ObservedObject var userPreferences = UserPreferences.shared
+    @ObservedObject var toDoPreferences = ToDoPreferences.shared
     @State private var appHasPopoverOpen = false
     @State private var keyMonitor: Any?
 
@@ -12,8 +13,14 @@ struct ContentView: View {
         VStack(spacing: 0) {
             ToolbarView()
 
+            if !remindersData.availableCalendars.isEmpty {
+                PopoverTabPicker()
+            }
+
             if remindersData.availableCalendars.isEmpty {
                 emptyStateContent
+            } else if toDoPreferences.selectedTab == .toDo {
+                toDoContent
             } else if remindersData.showingSearch {
                 searchContent
             } else if remindersData.showingRecentReminders {
@@ -38,6 +45,13 @@ struct ContentView: View {
         ) { _ in
             remindersData.showingSearch = false
             remindersData.showingRecentReminders = false
+        }
+        .onChange(of: toDoPreferences.selectedTab) { selectedTab in
+            // NOTE: Search and recent reminders belong to the Reminders tab.
+            if selectedTab == .toDo {
+                remindersData.showingSearch = false
+                remindersData.showingRecentReminders = false
+            }
         }
     }
 
@@ -206,6 +220,12 @@ struct ContentView: View {
 
     @ViewBuilder private var noFilterContent: some View {
         NoFilterSelectedView()
+            .frame(maxHeight: .infinity)
+    }
+
+    @ViewBuilder private var toDoContent: some View {
+        // NOTE: Placeholder until the To-Do list view is built.
+        Color.clear
             .frame(maxHeight: .infinity)
     }
 }

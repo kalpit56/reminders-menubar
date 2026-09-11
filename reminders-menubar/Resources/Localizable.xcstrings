@@ -20085,6 +20085,17 @@
         }
       }
     },
+    "remindersTabTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders"
+          }
+        }
+      }
+    },
     "removeReminderAlertCancelButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -23581,6 +23592,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "時間格式："
+          }
+        }
+      }
+    },
+    "toDoTabTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To Do"
           }
         }
       }
