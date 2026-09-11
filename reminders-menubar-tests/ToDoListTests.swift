@@ -85,3 +85,59 @@ struct ToDoListTests {
         #expect(ToDoList.match(in: [firstList, secondList], savedIdentifier: nil) == firstList)
     }
 }
+
+struct ToDoListHidingTests {
+    private let lists = [
+        FakeList(calendarIdentifier: "a", title: "Reminders"),
+        FakeList(calendarIdentifier: "todo", title: "To-Dos"),
+        FakeList(calendarIdentifier: "b", title: "Tasks")
+    ]
+
+    @Test
+    func removesToDoListAndKeepsOrder() {
+        let visibleLists = ToDoList.removingList(withIdentifier: "todo", from: lists)
+        #expect(visibleLists.map(\.calendarIdentifier) == ["a", "b"])
+    }
+
+    @Test
+    func nilIdentifierKeepsAllLists() {
+        #expect(ToDoList.removingList(withIdentifier: nil, from: lists) == lists)
+    }
+
+    @Test
+    func unknownIdentifierKeepsAllLists() {
+        #expect(ToDoList.removingList(withIdentifier: "missing", from: lists) == lists)
+    }
+
+    @Test
+    func emptyListsStayEmpty() {
+        let noLists: [FakeList] = []
+        #expect(ToDoList.removingList(withIdentifier: "todo", from: noLists).isEmpty)
+    }
+
+    @Test
+    func removesIdentifierFromFilterAndKeepsOrder() {
+        let filter = ToDoList.removingIdentifier("todo", from: ["a", "todo", "b"])
+        #expect(filter == ["a", "b"])
+    }
+
+    @Test
+    func removesDuplicateIdentifiers() {
+        #expect(ToDoList.removingIdentifier("todo", from: ["todo", "a", "todo"]) == ["a"])
+    }
+
+    @Test(arguments: [nil, "missing"] as [String?])
+    func identifierNotInFilterKeepsFilter(identifier: String?) {
+        #expect(ToDoList.removingIdentifier(identifier, from: ["a", "b"]) == ["a", "b"])
+    }
+
+    @Test
+    func filterWithOnlyToDoListBecomesEmpty() {
+        #expect(ToDoList.removingIdentifier("todo", from: ["todo"]).isEmpty)
+    }
+
+    @Test
+    func emptyFilterStaysEmpty() {
+        #expect(ToDoList.removingIdentifier("todo", from: []).isEmpty)
+    }
+}

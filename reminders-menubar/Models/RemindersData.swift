@@ -145,6 +145,17 @@ class RemindersData: ObservableObject {
 
     @Published var availableCalendars: [EKCalendar] = []
 
+    // NOTE: The To-Dos list is shown in its own tab, so it is hidden from the reminder list filter.
+    @Published private(set) var toDoListIdentifier: String?
+
+    var filterableCalendars: [EKCalendar] {
+        ToDoList.removingList(withIdentifier: toDoListIdentifier, from: availableCalendars)
+    }
+
+    private var visibleCalendarIdentifiersFilter: [String] {
+        ToDoList.removingIdentifier(toDoListIdentifier, from: calendarIdentifiersFilter)
+    }
+
     @Published var availableTags: [Tag] = []
 
     @Published var upcomingReminders: [ReminderItem] = []
@@ -245,6 +256,7 @@ class RemindersData: ObservableObject {
         let calendarsSet = Set(calendars.map({ $0.calendarIdentifier }))
         self.availableCalendars = calendars
         self.calendarIdentifiersFilter = self.calendarIdentifiersFilter.filter({ calendarsSet.contains($0) })
+        self.toDoListIdentifier = ToDoListService.findList()?.calendarIdentifier
         CalendarParser.updateShared(with: calendars)
 
         // Validate filter — remove stale tags that no longer exist
@@ -255,7 +267,7 @@ class RemindersData: ObservableObject {
 
         // Fetch reminder data with validated filters
         self.filteredCalendarReminderLists =
-            await RemindersService.shared.getReminders(of: self.calendarIdentifiersFilter)
+            await RemindersService.shared.getReminders(of: self.visibleCalendarIdentifiersFilter)
         self.upcomingReminders = await getUpcomingReminders()
         self.filteredTagReminderLists = await getTagReminders()
 
@@ -271,7 +283,7 @@ class RemindersData: ObservableObject {
     
     private func getUpcomingReminders() async -> [ReminderItem] {
         let calendarFilter = UserPreferences.shared.filterUpcomingRemindersByCalendar
-            ? self.calendarIdentifiersFilter
+            ? self.visibleCalendarIdentifiersFilter
             : nil
 
         return await RemindersService.shared.getUpcomingReminders(
@@ -284,7 +296,7 @@ class RemindersData: ObservableObject {
         guard !tagsFilter.isEmpty else { return [] }
 
         let calendarFilter = UserPreferences.shared.filterTagRemindersByCalendar
-            ? self.calendarIdentifiersFilter
+            ? self.visibleCalendarIdentifiersFilter
             : nil
 
         return await RemindersService.shared.getReminders(
@@ -299,7 +311,7 @@ class RemindersData: ObservableObject {
 
     private func getMenuBarCount() async -> Int {
         let calendarFilter = UserPreferences.shared.filterMenuBarContentByCalendar
-            ? self.calendarIdentifiersFilter
+            ? self.visibleCalendarIdentifiersFilter
             : nil
 
         switch UserPreferences.shared.menuBarCounterType {
@@ -322,7 +334,7 @@ class RemindersData: ObservableObject {
 
     private func refreshPreview() async {
         let calendarFilter = UserPreferences.shared.filterMenuBarContentByCalendar
-            ? calendarIdentifiersFilter
+            ? visibleCalendarIdentifiersFilter
             : nil
         await previewService.refresh(calendarFilter: calendarFilter)
     }

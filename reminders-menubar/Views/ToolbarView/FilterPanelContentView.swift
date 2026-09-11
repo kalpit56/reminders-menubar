@@ -33,7 +33,7 @@ struct FilterPanelContentView: View {
     // MARK: - Calendars
 
     private var calendarsSection: some View {
-        ForEach(remindersData.availableCalendars, id: \.calendarIdentifier) { calendar in
+        ForEach(remindersData.filterableCalendars, id: \.calendarIdentifier) { calendar in
             let isSelected = remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier)
             MenuRow(
                 text: ColoredDotTitle.text(calendar.title, color: Color(calendar.color)),

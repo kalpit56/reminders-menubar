@@ -27,4 +27,17 @@ enum ToDoList {
         let trimmedTitle = listTitle.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmedTitle.caseInsensitiveCompare(title) == .orderedSame
     }
+
+    static func removingList<List: ReminderListCandidate>(
+        withIdentifier identifier: String?,
+        from lists: [List]
+    ) -> [List] {
+        guard let identifier else { return lists }
+        return lists.filter { $0.calendarIdentifier != identifier }
+    }
+
+    static func removingIdentifier(_ identifier: String?, from identifiers: [String]) -> [String] {
+        guard let identifier else { return identifiers }
+        return identifiers.filter { $0 != identifier }
+    }
 }
