@@ -143,6 +143,8 @@
 		96A54A6D29A3B1A90060403F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A54A6C29A3B1A90060403F /* String+Extensions.swift */; };
 		B55D54F82F37DF4E002DE761 /* ReminderCopyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D54F72F37DF4E002DE761 /* ReminderCopyService.swift */; };
 		B55D54FE2F37E4E5002DE761 /* PopoverResizeHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */; };
+		A1D000000000000000000001 /* ComparableExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000003 /* ComparableExtensionsTests.swift */; };
+		A1D000000000000000000002 /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A01B62F4FDE5800C8A33E /* Comparable+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -298,6 +300,8 @@
 		96A54A6C29A3B1A90060403F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		B55D54F72F37DF4E002DE761 /* ReminderCopyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCopyService.swift; sourceTree = "<group>"; };
 		B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverResizeHandleView.swift; sourceTree = "<group>"; };
+		A1D000000000000000000003 /* ComparableExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableExtensionsTests.swift; sourceTree = "<group>"; };
+		A1D000000000000000000004 /* Reminders MenuBar Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Reminders MenuBar Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +318,13 @@
 			files = (
 				716BCF0E28C97C7100537081 /* KeyboardShortcuts in Frameworks */,
 				71217B9D2F8C4D3300E5FEB4 /* Sparkle in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1D000000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,8 +427,17 @@
 			children = (
 				712C32B224BF939100AC75E2 /* reminders-menubar */,
 				71059DA925CA5244001F3063 /* reminders-menubar-launcher */,
+				A1D000000000000000000005 /* reminders-menubar-tests */,
 				712C32B124BF939100AC75E2 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		A1D000000000000000000005 /* reminders-menubar-tests */ = {
+			isa = PBXGroup;
+			children = (
+				A1D000000000000000000003 /* ComparableExtensionsTests.swift */,
+			);
+			path = "reminders-menubar-tests";
 			sourceTree = "<group>";
 		};
 		712C32B124BF939100AC75E2 /* Products */ = {
@@ -425,6 +445,7 @@
 			children = (
 				712C32B024BF939100AC75E2 /* Reminders MenuBar.app */,
 				71059DA825CA5244001F3063 /* Reminders MenuBar Launcher.app */,
+				A1D000000000000000000004 /* Reminders MenuBar Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -692,6 +713,23 @@
 			productReference = 712C32B024BF939100AC75E2 /* Reminders MenuBar.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A1D000000000000000000009 /* Reminders MenuBar Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1D00000000000000000000A /* Build configuration list for PBXNativeTarget "Reminders MenuBar Tests" */;
+			buildPhases = (
+				A1D000000000000000000008 /* Sources */,
+				A1D000000000000000000006 /* Frameworks */,
+				A1D000000000000000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Reminders MenuBar Tests";
+			productName = "Reminders MenuBar Tests";
+			productReference = A1D000000000000000000004 /* Reminders MenuBar Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -708,6 +746,9 @@
 					};
 					712C32AF24BF939100AC75E2 = {
 						CreatedOnToolsVersion = 11.5;
+					};
+					A1D000000000000000000009 = {
+						CreatedOnToolsVersion = 26.6;
 					};
 				};
 			};
@@ -749,6 +790,7 @@
 			targets = (
 				712C32AF24BF939100AC75E2 /* Reminders MenuBar */,
 				71059DA725CA5244001F3063 /* Reminders MenuBar Launcher */,
+				A1D000000000000000000009 /* Reminders MenuBar Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -770,6 +812,13 @@
 				71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */,
 				712C32BB24BF939200AC75E2 /* Preview Assets.xcassets in Resources */,
 				712C32B824BF939200AC75E2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1D000000000000000000007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,6 +986,15 @@
 				716F69EC2D641A090080A5F1 /* ReminderEllipsisMenuView.swift in Sources */,
 				71A0B2DC25CE20AC004E06AE /* UpdateController.swift in Sources */,
 				716F69F02D641E2F0080A5F1 /* ReminderChangePriorityOptionMenu.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1D000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1D000000000000000000001 /* ComparableExtensionsTests.swift in Sources */,
+				A1D000000000000000000002 /* Comparable+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1426,9 +1484,80 @@
 			};
 			name = Release;
 		};
+		A1D00000000000000000000B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A1D00000000000000000000C /* Debug-AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = "Debug-AppStore";
+		};
+		A1D00000000000000000000D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A1D00000000000000000000E /* Release-AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = "Release-AppStore";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A1D00000000000000000000A /* Build configuration list for PBXNativeTarget "Reminders MenuBar Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1D00000000000000000000B /* Debug */,
+				A1D00000000000000000000C /* Debug-AppStore */,
+				A1D00000000000000000000D /* Release */,
+				A1D00000000000000000000E /* Release-AppStore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		71059DBA25CA5245001F3063 /* Build configuration list for PBXNativeTarget "Reminders MenuBar Launcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
