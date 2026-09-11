@@ -45,6 +45,6 @@
 	<key>SUEnableInstallerLauncherService</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
-	<true/>
+	<false/>
 </dict>
 </plist>
