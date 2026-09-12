@@ -170,6 +170,29 @@ struct ToDoSortingTests {
     }
 }
 
+struct ToDoRenameTests {
+    @Test(arguments: ["", " ", "\n", "Find gift", "  Find gift  "])
+    func blankOrUnchangedTitleIsRejected(input: String) {
+        #expect(ToDoList.renamedTitle(from: input, currentTitle: "Find gift") == nil)
+    }
+
+    @Test(arguments: [
+        (input: "Buy gift", expected: "Buy gift"),
+        (input: "  Buy gift  ", expected: "Buy gift"),
+        (input: "find gift", expected: "find gift"),
+        (input: "Find gift now", expected: "Find gift now"),
+        (input: "🎁", expected: "🎁")
+    ])
+    func changedTitleIsTrimmedAndReturned(input: String, expected: String) {
+        #expect(ToDoList.renamedTitle(from: input, currentTitle: "Find gift") == expected)
+    }
+
+    @Test
+    func renamingFromABlankCurrentTitleWorks() {
+        #expect(ToDoList.renamedTitle(from: "Find gift", currentTitle: "") == "Find gift")
+    }
+}
+
 struct ToDoListHidingTests {
     private let lists = [
         FakeList(calendarIdentifier: "a", title: "Reminders"),

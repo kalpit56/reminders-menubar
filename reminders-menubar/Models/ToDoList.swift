@@ -28,6 +28,11 @@ enum ToDoList {
         return trimmedInput.isEmpty ? nil : trimmedInput
     }
 
+    static func renamedTitle(from input: String, currentTitle: String) -> String? {
+        guard let newTitle = normalizedTitle(input), newTitle != currentTitle else { return nil }
+        return newTitle
+    }
+
     static func sortedNewestFirst<Item>(_ items: [Item], creationDate: (Item) -> Date?) -> [Item] {
         // NOTE: Items without a creation date go last, and ties keep their original order.
         return items.enumerated()

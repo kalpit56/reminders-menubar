@@ -8,6 +8,8 @@ class ToDoData: ObservableObject {
 
     @Published private(set) var toDoItems: [ReminderItem] = []
 
+    @Published var renamingItemId: String?
+
     init() {
         addObservers()
         Task {
@@ -50,5 +52,16 @@ class ToDoData: ObservableObject {
 
         RemindersService.shared.createNew(titled: title, in: list)
         return true
+    }
+
+    func rename(_ reminderItem: ReminderItem, to input: String) {
+        renamingItemId = nil
+
+        guard let newTitle = ToDoList.renamedTitle(from: input, currentTitle: reminderItem.reminder.title) else {
+            return
+        }
+
+        reminderItem.reminder.title = newTitle
+        RemindersService.shared.save(reminder: reminderItem.reminder)
     }
 }

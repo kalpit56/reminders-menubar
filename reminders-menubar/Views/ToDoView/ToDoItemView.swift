@@ -2,9 +2,17 @@ import SwiftUI
 import EventKit
 
 struct ToDoItemView: View {
+    @EnvironmentObject private var toDoData: ToDoData
+
     var reminderItem: ReminderItem
 
     @State private var isPendingCompletion = false
+    @State private var showingRemoveAlert = false
+    @State private var renamedTitle = ""
+
+    private var isRenaming: Bool {
+        toDoData.renamingItemId == reminderItem.id
+    }
 
     var body: some View {
         if reminderItem.reminder.calendar == nil {
@@ -16,9 +24,7 @@ struct ToDoItemView: View {
                 ReminderCompleteButton(reminderItem: reminderItem, isPendingCompletion: $isPendingCompletion)
 
                 VStack(spacing: 4) {
-                    Text(reminderItem.reminder.title.toDetectedLinkAttributedString())
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    toDoTitle()
 
                     Divider()
                         .padding(.top, 2)
@@ -29,6 +35,52 @@ struct ToDoItemView: View {
                 .allowsHitTesting(!isPendingCompletion)
             }
             .padding(.bottom, 2)
+            .alert(isPresented: $showingRemoveAlert) {
+                removeReminderAlert(for: reminderItem.reminder)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func toDoTitle() -> some View {
+        if isRenaming {
+            SubmittableTextField(
+                text: $renamedTitle,
+                placeholder: reminderItem.reminder.title,
+                onSubmit: { toDoData.rename(reminderItem, to: renamedTitle) }
+            )
+            .font(.body)
+        } else {
+            Text(reminderItem.reminder.title.toDetectedLinkAttributedString())
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contextMenu {
+                    renameButton()
+                    removeButton()
+                }
+        }
+    }
+
+    private func renameButton() -> some View {
+        Button(action: {
+            renamedTitle = reminderItem.reminder.title
+            toDoData.renamingItemId = reminderItem.id
+        }) {
+            HStack {
+                Image(rmbSymbol: .pencil)
+                Text(rmbLocalized(.toDoRenameMenuOption))
+            }
+        }
+    }
+
+    private func removeButton() -> some View {
+        Button(action: {
+            showingRemoveAlert = true
+        }) {
+            HStack {
+                Image(rmbSymbol: .trash)
+                Text(rmbLocalized(.toDoDeleteMenuOption))
+            }
         }
     }
 }
@@ -46,5 +98,6 @@ struct ToDoItemView: View {
     }
 
     ToDoItemView(reminderItem: ReminderItem(for: reminder))
+        .environmentObject(ToDoData())
         .environmentObject(RemindersData())
 }

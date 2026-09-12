@@ -199,6 +199,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case remindersTabTitle
     case toDoTabTitle
     case toDoAddFieldPlaceholder
+    case toDoRenameMenuOption
+    case toDoDeleteMenuOption
 }
 
 struct ReminderMenuBarLocale {

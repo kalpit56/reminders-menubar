@@ -3,6 +3,7 @@ import EventKit
 
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
+    @EnvironmentObject var toDoData: ToDoData
     @EnvironmentObject var newReminderTypingCoordinator: NewReminderTypingCoordinator
     @ObservedObject var userPreferences = UserPreferences.shared
     @ObservedObject var toDoPreferences = ToDoPreferences.shared
@@ -45,6 +46,7 @@ struct ContentView: View {
         ) { _ in
             remindersData.showingSearch = false
             remindersData.showingRecentReminders = false
+            toDoData.renamingItemId = nil
         }
         .onChange(of: toDoPreferences.selectedTab) { selectedTab in
             // NOTE: Search and recent reminders belong to the Reminders tab.
@@ -106,6 +108,10 @@ struct ContentView: View {
         guard popoverWindow.attachedSheet == nil else { return false }
         guard event.keyCode == RmbKeyCode.escape else { return false }
 
+        if toDoData.renamingItemId != nil {
+            toDoData.renamingItemId = nil
+            return true
+        }
         if remindersData.showingSearch {
             remindersData.showingSearch = false
             return true

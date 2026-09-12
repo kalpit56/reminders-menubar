@@ -158,6 +158,7 @@
 		A1D000000000000000000035 /* ToDoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000031 /* ToDoContentView.swift */; };
 		A1D000000000000000000036 /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000032 /* ToDoItemView.swift */; };
 		A1D000000000000000000037 /* ToDoAddField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000033 /* ToDoAddField.swift */; };
+		A1D000000000000000000041 /* SubmittableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000040 /* SubmittableTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -326,6 +327,7 @@
 		A1D000000000000000000031 /* ToDoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoContentView.swift; sourceTree = "<group>"; };
 		A1D000000000000000000032 /* ToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemView.swift; sourceTree = "<group>"; };
 		A1D000000000000000000033 /* ToDoAddField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAddField.swift; sourceTree = "<group>"; };
+		A1D000000000000000000040 /* SubmittableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmittableTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,6 +440,7 @@
 				71FM00002FA9000100000001 /* FocusDirection.swift */,
 				71AABB002F8E5A0000000001 /* RemoveReminderAlert.swift */,
 				B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */,
+				A1D000000000000000000040 /* SubmittableTextField.swift */,
 				714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */,
 				71103A59304C967F00E4CEC2 /* PlaceholderNSTextView.swift */,
 				714598D229295330008CAA43 /* RmbDatePicker.swift */,
@@ -959,6 +962,7 @@
 				A1D000000000000000000035 /* ToDoContentView.swift in Sources */,
 				A1D000000000000000000036 /* ToDoItemView.swift in Sources */,
 				A1D000000000000000000037 /* ToDoAddField.swift in Sources */,
+				A1D000000000000000000041 /* SubmittableTextField.swift in Sources */,
 				71CC00022FA6000200000001 /* CopyShortcutCoordinator.swift in Sources */,
 				71CE00022FA6000200000001 /* NewReminderTypingCoordinator.swift in Sources */,
 				71CC00042FA6000400000002 /* SettingsCoordinator.swift in Sources */,
