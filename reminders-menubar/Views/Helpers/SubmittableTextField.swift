@@ -4,6 +4,7 @@ struct SubmittableTextField: NSViewRepresentable {
     @Binding var text: String
     var placeholder: String
     var onSubmit: () -> Void
+    var onFieldCreated: ((NSTextField) -> Void)?
 
     func makeNSView(context: Context) -> NSTextField {
         let textField = NSTextField()
@@ -14,6 +15,7 @@ struct SubmittableTextField: NSViewRepresentable {
         textField.font = .systemFont(ofSize: NSFont.systemFontSize)
         textField.cell?.sendsActionOnEndEditing = false
         textField.stringValue = text
+        onFieldCreated?(textField)
         DispatchQueue.main.async {
             textField.window?.makeFirstResponder(textField)
         }

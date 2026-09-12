@@ -159,6 +159,9 @@
 		A1D000000000000000000036 /* ToDoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000032 /* ToDoItemView.swift */; };
 		A1D000000000000000000037 /* ToDoAddField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000033 /* ToDoAddField.swift */; };
 		A1D000000000000000000041 /* SubmittableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000040 /* SubmittableTextField.swift */; };
+		A1D000000000000000000051 /* ToDoTypingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000050 /* ToDoTypingCoordinator.swift */; };
+		A1D000000000000000000052 /* ToDoTypingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000050 /* ToDoTypingCoordinator.swift */; };
+		A1D000000000000000000054 /* ToDoTypingCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D000000000000000000053 /* ToDoTypingCoordinatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -328,6 +331,8 @@
 		A1D000000000000000000032 /* ToDoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemView.swift; sourceTree = "<group>"; };
 		A1D000000000000000000033 /* ToDoAddField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAddField.swift; sourceTree = "<group>"; };
 		A1D000000000000000000040 /* SubmittableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmittableTextField.swift; sourceTree = "<group>"; };
+		A1D000000000000000000050 /* ToDoTypingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTypingCoordinator.swift; sourceTree = "<group>"; };
+		A1D000000000000000000053 /* ToDoTypingCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTypingCoordinatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +423,7 @@
 				B55D54F72F37DF4E002DE761 /* ReminderCopyService.swift */,
 				A1D000000000000000000011 /* ToDoListService.swift */,
 				A1D000000000000000000017 /* ToDoPreferences.swift */,
+				A1D000000000000000000050 /* ToDoTypingCoordinator.swift */,
 				71CC00012FA6000100000001 /* CopyShortcutCoordinator.swift */,
 				71CE00012FA6000100000001 /* NewReminderTypingCoordinator.swift */,
 				71CC00032FA6000300000002 /* SettingsCoordinator.swift */,
@@ -478,6 +484,7 @@
 				A1D000000000000000000003 /* ComparableExtensionsTests.swift */,
 				A1D000000000000000000012 /* ToDoListTests.swift */,
 				A1D000000000000000000022 /* PopoverTabTests.swift */,
+				A1D000000000000000000053 /* ToDoTypingCoordinatorTests.swift */,
 			);
 			path = "reminders-menubar-tests";
 			sourceTree = "<group>";
@@ -963,6 +970,7 @@
 				A1D000000000000000000036 /* ToDoItemView.swift in Sources */,
 				A1D000000000000000000037 /* ToDoAddField.swift in Sources */,
 				A1D000000000000000000041 /* SubmittableTextField.swift in Sources */,
+				A1D000000000000000000051 /* ToDoTypingCoordinator.swift in Sources */,
 				71CC00022FA6000200000001 /* CopyShortcutCoordinator.swift in Sources */,
 				71CE00022FA6000200000001 /* NewReminderTypingCoordinator.swift in Sources */,
 				71CC00042FA6000400000002 /* SettingsCoordinator.swift in Sources */,
@@ -1055,6 +1063,8 @@
 				A1D000000000000000000016 /* ToDoListTests.swift in Sources */,
 				A1D000000000000000000024 /* PopoverTab.swift in Sources */,
 				A1D000000000000000000026 /* PopoverTabTests.swift in Sources */,
+				A1D000000000000000000052 /* ToDoTypingCoordinator.swift in Sources */,
+				A1D000000000000000000054 /* ToDoTypingCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

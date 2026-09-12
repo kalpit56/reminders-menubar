@@ -50,12 +50,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let toDoData = ToDoData()
         let copyShortcutCoordinator = CopyShortcutCoordinator()
         let newReminderTypingCoordinator = NewReminderTypingCoordinator()
+        let toDoTypingCoordinator = ToDoTypingCoordinator()
         return NSHostingController(
             rootView: contentView
                 .environmentObject(remindersData)
                 .environmentObject(toDoData)
                 .environmentObject(copyShortcutCoordinator)
                 .environmentObject(newReminderTypingCoordinator)
+                .environmentObject(toDoTypingCoordinator)
         )
     }
 

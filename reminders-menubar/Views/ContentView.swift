@@ -5,6 +5,7 @@ struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @EnvironmentObject var toDoData: ToDoData
     @EnvironmentObject var newReminderTypingCoordinator: NewReminderTypingCoordinator
+    @EnvironmentObject var toDoTypingCoordinator: ToDoTypingCoordinator
     @ObservedObject var userPreferences = UserPreferences.shared
     @ObservedObject var toDoPreferences = ToDoPreferences.shared
     @State private var appHasPopoverOpen = false
@@ -66,6 +67,9 @@ struct ContentView: View {
             guard !appHasPopoverOpen else { return event }
             guard !FilterPanelController.shared.isVisible else { return event }
 
+            if handleToDoTyping(event, popoverWindow: popoverWindow) {
+                return nil
+            }
             if handleNewReminderTyping(event, popoverWindow: popoverWindow) {
                 return nil
             }
@@ -89,6 +93,18 @@ struct ContentView: View {
         guard isMainPopoverEvent || isNewReminderSheetEvent else { return nil }
 
         return window
+    }
+
+    private func handleToDoTyping(_ event: NSEvent, popoverWindow: NSWindow) -> Bool {
+        guard ToDoTypingCoordinator.shouldRedirectTyping(
+            isShowingToDoTab: toDoPreferences.selectedTab == .toDo && !remindersData.availableCalendars.isEmpty,
+            isRenaming: toDoData.renamingItemId != nil,
+            hasAttachedSheet: popoverWindow.attachedSheet != nil,
+            isTextInput: isTextInputEvent(event)
+        ) else {
+            return false
+        }
+        return toDoTypingCoordinator.focusAddField(replaying: event)
     }
 
     private func handleNewReminderTyping(_ event: NSEvent, popoverWindow: NSWindow) -> Bool {
@@ -268,4 +284,5 @@ struct ListSectionModifier: ViewModifier {
         .environmentObject(RemindersData())
         .environmentObject(ToDoData())
         .environmentObject(NewReminderTypingCoordinator())
+        .environmentObject(ToDoTypingCoordinator())
 }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ToDoAddField: View {
     @EnvironmentObject var toDoData: ToDoData
+    @EnvironmentObject var toDoTypingCoordinator: ToDoTypingCoordinator
     @ObservedObject var userPreferences = UserPreferences.shared
 
     @State private var text = ""
@@ -15,7 +16,8 @@ struct ToDoAddField: View {
             SubmittableTextField(
                 text: $text,
                 placeholder: rmbLocalized(.toDoAddFieldPlaceholder),
-                onSubmit: submit
+                onSubmit: submit,
+                onFieldCreated: { toDoTypingCoordinator.register(addField: $0) }
             )
             .font(.body)
         }
@@ -39,4 +41,5 @@ struct ToDoAddField: View {
 #Preview {
     ToDoAddField()
         .environmentObject(ToDoData())
+        .environmentObject(ToDoTypingCoordinator())
 }
